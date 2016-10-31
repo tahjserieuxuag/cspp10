@@ -1,0 +1,5 @@
+Temperaturef = float(input("enter Temperatureerature "))
+Temperaturec = float(Temperaturef * 1.8 +32)
+Temperaturef = str(Temperaturef)
+Temperaturec = str(Temperaturec)
+print ( (Temperaturec) + " F is equal to " + (Temperaturef) + " C" )
