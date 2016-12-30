@@ -3,15 +3,8 @@ Player_mone = 100
 
 def get_bet():
     bet = int(input("How much would you like to bet? "))
-    player_money = 100
-    while bet>player_money or bet < 0 or bet == 0:
-        if bet > player_money:
-            bet = input("too much bet again ")
-        elif bet < 0:
-            bet = input("no negative number ")
-        elif bet == 0:
-            bet = input("zero is not an option, bet again ")
-        return bet
+    return bet
+   
 # get a bet
   
 def roll2dice():
@@ -38,6 +31,18 @@ def phase3(dice_sum):
             print("you lose")
             return "lose"
 def craps():
+    player_money = 100
+    roll_bet = get_bet()
+    
+    phase2_dice = roll2dice()
+    phase3_roll = phase3(dice_sum)
+    if phase2_dice == "Winner":
+        print("You won")
+    elif phase2_dice == "Loose":
+        print("You loose")
+        player_money = player_money -roll_bet
+    
+    
     
             
 
