@@ -32,16 +32,7 @@ def phase3(dice_sum):
             return "lose"
 def craps():
     player_money = 100
-    roll_bet = get_bet()
-    
-    phase2_dice = roll2dice()
-    phase3_roll = phase3(dice_sum)
-    if phase2_dice == "Winner":
-        print("You won")
-    elif phase2_dice == "Loose":
-        print("You loose")
-        player_money = player_money -roll_bet
-    
+
     
     
             
