@@ -1,38 +1,74 @@
 import random
 Player_mone = 100
-
-def get_bet():
+#get bet
+def get_bet(bank):
+    bank = 100
     bet = int(input("How much would you like to bet? "))
-    return bet
+    while True:
+        if bet > bank:
+            bet = int(input("You dont have enough money, bet again "))
+        elif bet == 0:
+            bet = int(input("You cant bet nothing, bet again "))
+        elif bet < 0:
+            bet = int(input("you cant bet that, bet again "))
+        else:
+            return bet
+    
+    
    
-# get a bet
-  
+
+  #get phase 2 roll
 def roll2dice():
     dice1 = random.randint(1,6)
     dice2 = random.randint(1,6)
     dice_sum = dice1 + dice2
     print("you rolled {},{} and {} in total".format(dice1,dice2,dice_sum))
-    if dice_sum == 7 or dice_sum == 1:
-        return "Winner"
-    elif dice_sum == 2 or dice_sum == 3 or dice_sum == 12:
-        return "Loose"
     return dice_sum
     
-
-def phase3(dice_sum):
+#return "winner" or "loser"
+def phase3(point_roll):
     while True:
-        pdice1 = random.randint(1,6)
-        pdice2 = random.randint(1,6)
-        phase_sum = pdice1 + pdice2
-        if phase_sum == dice_sum:
-            print("player wins")
+        roll = roll2dice()
+        if roll == point_roll:
             return "win"
-        elif phase_sum == 7:
-            print("you lose")
-            return "lose"
+        elif roll == 7:
+            return "lost"
+                    
+    
+    
+    
+    
+    
+ #main game           
 def craps():
-    player_money = 100
+    bank = 100
+    while bank > 0:
+        bet = get_bet(bank)
+        dice = roll2dice()
+        if dice == 2 or dice == 3 or dice == 12:
+            print("You Loose")
+            bank = bank - bet
+        elif dice == 7 or dice == 11:
+            print("You Won")
+            bank = bank + bet
+        else :
+            phase = phase3(dice)
+            if phase == "win":
+                print("You Win")
+                bank = bank + bet
+            elif phase == "lost":
+                print("You Lost")
+                bank = bank - bet
+        
+        print("You have ${} in your bank".format(bank))
+           
+        
+        
+        
+        
 
+   
+craps()
     
     
             
@@ -50,5 +86,3 @@ def craps():
 
 
 
-
-get_bet()

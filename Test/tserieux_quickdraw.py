@@ -2,14 +2,14 @@ import random
 
 def get_player_move():
     bullets = 0
-    P_move = input("Will you BLOCK,RELOAD or SHOOT ")
-    if p_move.lower() == "block":
+    P_move = input("will you block,reload or shoot ")
+    if p_move == "block":
         return "block"
-    elif p_move.lower() == "shoot":
+    elif p_move == "shoot":
         return "shoot"
-    elif p_move.lower() == "shoot" and bullets == 0:
+    elif p_move == "shoot" and bullets == 0:
         return "no bullets"
-    elif p_move.lower() == "reload":
+    elif p_move == "reload":
         return "reload"
     else:
         p_move = input("That is not a move, input again")
@@ -26,16 +26,12 @@ def get_comp_move():
     elif comp_move == 3:
         return "reload"
 
-def quick_draw(comp_move,p_move):
-    bullets = 0
+def game():
     player_health = 3
-    computer_health = 3
-    while player_health != 0 or computer_health != 0:
-        if p_move == "shoot" and comp_move == "reload":
-            computer_health = computer_health - 1
-            return computer_health
-        elif p_move == "shoot" and comp_move == "shoot":
-            player_health == player_health - 1 and computer_health == computer_health - 1
-            return(player_health,computer_health)
+    com_health = 3
+    com_move = get
+ 
+    
+    
     
         

@@ -13,7 +13,7 @@ def roll2dice():
     dice_sum = dice_1 +dice_2
    
     # print the sum
-    print("You rolled a {}".format(dice_sum))
+    print("You rolled a {},{} in total {}".format(dice_1,dice_2,dice_sum))
    
     # return the sum
     return dice_sum
@@ -22,7 +22,7 @@ def roll2dice():
 # name: get_bet
 # arguments: bank - current player balance
 # returns: the bet
-def get_bet():
+def get_bet(bank):
     ask_bet = int(input("how much would you like to bet? "))
     bank = 100
     while True:
@@ -35,6 +35,8 @@ def get_bet():
         elif ask_bet == 0:
             print("you cant bet nothing")
             ask_bet = int(input("how much would you like to bet? "))
+        else:
+            return ask_bet
             
     # ask the player how much they want to bet
    
@@ -71,7 +73,7 @@ def get_range(dice_sum):
 # returns: player's choice of range
 #       "over7", "under7", or "equal7"
 def choose_range():
-    select_range = input("Do you think it is over 7, under 7, or equals 7")
+    select_range = input("Do you think it is over7, under7, or equals7: ")
     if select_range == "equals 7":
         return "equals 7"
     elif select_range == "over 7":
@@ -84,9 +86,32 @@ def choose_range():
     # return their choice
 
 def main_game():
+    bank = 100
+    while bank > 0:
+        bet = get_bet(bank)
+        user_range = choose_range()
+        dice = roll2dice()
+        round_range = get_range(dice) 
+        if user_range == round_range:
+            print("You Win")
+            if user_range == "equals 7":
+                bank = bank + 4*bet
+            else:
+                bank = bank + bet
+        else:
+            print("you lost")
+            bank = bank - bet
+
+        print("your balance is ${}".format(bank))
+        new_round = input("Do you want to continue? [y/n] ").lower()
+        if new_round != "y":
+            break
+    
+    print("The game is over you have ${} in your bank".format(bank))
+    
     
     
  
 # function for the main game
-roll2dice()
-get_bet()
+
+main_game()
